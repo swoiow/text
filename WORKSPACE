@@ -72,10 +72,10 @@ http_archive(
     name = "org_tensorflow",
     patch_args = ["-p1"],
     patches = ["//third_party/tensorflow:tf.patch"],
-    strip_prefix = "tensorflow-2.15.0",
-    sha256 = "f771db8d96ca13c72f73c85c9cfb6f5358e2de3dd62a97a9ae4b672fe4c6d094",
+    strip_prefix = "tensorflow-2.15.1",
+    sha256 = "9534898c07243512c939c74184568e2484f1de962ab4f26ff55aa0dcef211e33",
     urls = [
-        "https://github.com/tensorflow/tensorflow/archive/v2.15.0.zip"
+        "https://github.com/tensorflow/tensorflow/archive/v2.15.1.zip"
     ],
 )
 
