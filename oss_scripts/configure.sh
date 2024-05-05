@@ -85,7 +85,7 @@ TF_ABIFLAG=$($installed_python -c "import tensorflow as tf; print(tf.sysconfig.C
 
 HEADER_DIR=${TF_CFLAGS:2}
 SHARED_LIBRARY_DIR=${TF_LFLAGS:2}
-SHARED_LIBRARY_NAME=$(echo $TF_LFLAGS_2 | rev | cut -d":" -f1 | rev)
+SHARED_LIBRARY_NAME=$(echo $TF_LFLAGS_2 | sed 's#.*:##')
 if is_macos; then
   SHARED_LIBRARY_NAME="libtensorflow_framework.2.dylib"
 fi
