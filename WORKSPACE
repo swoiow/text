@@ -4,11 +4,11 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "icu",
-    strip_prefix = "icu-release-64-2",
-    sha256 = "dfc62618aa4bd3ca14a3df548cd65fe393155edd213e49c39f3a30ccd618fc27",
+    strip_prefix = "icu-release-69-1",
+    sha256 = "3144e17a612dda145aa0e4acb3caa27a5dae4e26edced64bc351c43d5004af53",
     urls = [
-        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/unicode-org/icu/archive/release-64-2.zip",
-        "https://github.com/unicode-org/icu/archive/release-64-2.zip",
+        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/unicode-org/icu/archive/release-69-1.zip",
+        "https://github.com/unicode-org/icu/archive/release-69-1.zip",
     ],
     build_file = "//third_party/icu:BUILD.bzl",
     patches = ["//third_party/icu:udata.patch"],
@@ -57,7 +57,7 @@ http_archive(
 http_archive(
     name = "org_tensorflow",
     patch_args = ["-p1"],
-    patches = ["//third_party/tensorflow:tf.patch"],
+#    patches = ["//third_party/tensorflow:tf.patch"],
     strip_prefix = "tensorflow-2.16.1",
     sha256 = "54c976f828182f85e10e03840dd3b0504109f57760a498075574e35e9aa983fe",
     urls = [
@@ -77,11 +77,11 @@ http_archive(
 http_archive(
     name = "pybind11",
     urls = [
-        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/pybind/pybind11/archive/v2.10.0.tar.gz",
-        "https://github.com/pybind/pybind11/archive/v2.10.0.tar.gz",
+        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/pybind/pybind11/archive/v2.10.4.tar.gz",
+        "https://github.com/pybind/pybind11/archive/v2.10.4.tar.gz",
     ],
-    sha256 = "eacf582fa8f696227988d08cfc46121770823839fe9e301a20fbce67e7cd70ec",
-    strip_prefix = "pybind11-2.10.0",
+    sha256 = "832e2f309c57da9c1e6d4542dedd34b24e4192ecb4d62f6f4866a737454c9970",
+    strip_prefix = "pybind11-2.10.4",
     build_file = "//third_party/pybind11:BUILD.bzl",
 )
 
