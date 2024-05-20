@@ -48,10 +48,10 @@ else
     if [[ x"$(arch)" == x"arm64" ]]; then
       pip install tensorflow-macos==2.13.0
     else
-      pip install tensorflow==2.16.1
+      pip install -U tensorflow==2.16.1
     fi
   else
-    pip install tensorflow==2.16.1
+    pip install -U tensorflow==2.16.1
   fi
 fi
 
@@ -61,10 +61,10 @@ if is_windows; then
 fi
 
 # Copy the current bazelversion of TF.
-curl https://raw.githubusercontent.com/tensorflow/tensorflow/r2.16/.bazelversion -o .bazelversion
+curl https://raw.githubusercontent.com/tensorflow/tensorflow/master/.bazelversion -o .bazelversion
 
 # Copy the building configuration of TF.
-curl https://raw.githubusercontent.com/tensorflow/tensorflow/r2.16/.bazelrc -o .bazelrc
+curl https://raw.githubusercontent.com/tensorflow/tensorflow/master/.bazelrc -o .bazelrc
 # This line breaks Windows builds, so we remove it.
 sed -i -e 's/build --noincompatible_remove_legacy_whole_archive//' .bazelrc
 
@@ -85,7 +85,8 @@ TF_ABIFLAG=$($installed_python -c "import tensorflow as tf; print(tf.sysconfig.C
 
 HEADER_DIR=${TF_CFLAGS:2}
 SHARED_LIBRARY_DIR=${TF_LFLAGS:2}
-SHARED_LIBRARY_NAME=$(echo $TF_LFLAGS_2 | rev | cut -d":" -f1 | rev)
+# SHARED_LIBRARY_NAME=$(echo $TF_LFLAGS_2 | rev | cut -d":" -f1 | rev)
+SHARED_LIBRARY_NAME=$(echo $TF_LFLAGS_2 | sed 's#.*:##')
 if is_macos; then
   SHARED_LIBRARY_NAME="libtensorflow_framework.2.dylib"
 fi
