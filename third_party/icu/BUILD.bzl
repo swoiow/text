@@ -56,6 +56,7 @@ cc_library(
     ]),
     copts = [
         "-DU_COMMON_IMPLEMENTATION",
+        "-DU_HAVE_STD_ATOMICS",  # TODO(gunan): Remove when TF is on ICU 64+.
     ] + select({
         ":android": [
             "-fdata-sections",
